@@ -1,0 +1,107 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+
+</script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<head>
+    <title>Booking Tickets!!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.pubnub.com/pubnub-3.15.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdn.pubnub.com/sdk/pubnub-angular/pubnub-angular-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+      
+  </head> 
+<h5><p style = "margin-left: 1200px">
+    <a>
+        <div class="media border p-3" style="margin-left: -1200px;height: 20%">
+          <img src="assets\logo1.png" alt="myCinema" >
+        </div>
+      </a>
+      <a>
+          <form (ngSubmit)="getTicketsByCustomerId()">
+              <button class = "mat-stroked-button" width ="5em" height = "1.5em" (click)="loginUser()"><h6>Cancel Bookings</h6></button>
+          </form>
+          <form (ngSubmit)="logout()">
+              <button class = "mat-stroked-button" width ="4em" height="1.5em" (click)="loginUser()"><h6>Logout</h6></button>
+          </form>
+      </a>
+    </p>
+</h5>
+<div [ngStyle]="{backgroundImage:'url(./assets/image_movie.jpg)'}" style = "height:580px;background-size: contain;background-repeat: no-repeat;">
+
+<div class="container">
+        
+
+        <div class="container">
+            <table class = "table table-bordered table-striped table-hover table-sm" style="text-align: center;">
+                <thead>
+                    <tr>
+                        <th style="text-align:center;">Movie Id</th>
+                        <th style="text-align:center;">Date MM-DD-YYYY</th>
+                        <th style="text-align:center;">Name</th>
+                        <th style="text-align:center;">Rating</th>
+                        <th style="text-align:center;">Time</th>
+                        <th style="text-align:center;">Seats Remaining</th>
+                        <th style="text-align:center;">Theatre ID</th>
+                        <th style="text-align:center;">Theatre Name</th>
+                        <th style="text-align:center;">Theatre Address</th>
+                        
+                    </tr>
+                </thead>
+            <tr *ngFor="let movie of movies">
+                <td>{{movie.movieId}}</td>
+                <td>{{movie.movieDate}}</td>
+                <td>{{movie.movieName}}</td>
+                <td>{{movie.movieRating}}</td>
+                <td>{{movie.movieTime}}</td>
+                <td>{{movie.seatsRemaining}}</td>
+                <td>{{movie.theatre.theatreId}}</td>
+                <td>{{movie.theatre.theatreName}}</td>
+                <td>{{movie.theatre.theatreAddress}}</td>
+            </tr>
+            </table>
+        </div>
+        <div class="row justify-content-center">
+            <!-- <div class="col-md-6">-->
+               <div class="card">
+                   <header class="card-header">
+                       <h3 class="card-title mt-2">Tickets</h3>
+                   </header>
+               <article class="card-body">
+                   <form  #TicketForm= "ngForm" (ngSubmit)="RegisterTicket(TicketForm)" style="text-align:justify" >
+           
+                    <h4>
+        
+                   <div class="col form-group">
+                       <label>Number of Tickets&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+                         <input type="text" name = "noofTickets" [(ngModel)] = 'ticket.noofTickets' required>
+                   </div> <!-- form-group end.// -->
+                   <div class="col form-group">
+                       <label>Movie ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+                         <input type="text" name = "movieId" [(ngModel)] = 'ticket.movie.movieId' required>
+                   </div> <!-- form-group end.// -->
+                   
+               
+               
+                   <div class="form-group" style="text-align: left;">
+                      <button class="btn btn-primary btn-lg "> <h4> Book </h4> </button>
+                   </div>
+                   </h4>
+                </form>
+               </article>
+               </div>
+        </div>
+        </div>
+    </div>
+
+        
+    

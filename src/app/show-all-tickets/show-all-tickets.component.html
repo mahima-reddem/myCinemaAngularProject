@@ -1,0 +1,57 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+
+</script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<head>
+    <title>Booking Tickets!!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.pubnub.com/pubnub-3.15.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdn.pubnub.com/sdk/pubnub-angular/pubnub-angular-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+      
+  </head> 
+  <h5>
+    <a>
+        <div class="media border p-3" style="margin-left: -2px;height: 20%">
+          <img src="assets\logo1.png" alt="myCinema" >
+        </div>
+    </a>
+  </h5>
+  <div class="container">
+    <table class = "table table-bordered table-striped table-hover table-sm" style="text-align: center;">
+        <thead>
+            <tr>
+                <th style="text-align:center;">Id</th>
+                <th style="text-align:center;">No.ofTickets</th>
+                <th style="text-align:center;">Customer Id</th>
+                <th style="text-align: center;">Customer Name</th>
+                <th style="text-align: center;">Customer Phone</th>
+                <th style="text-align: center;">Customer Email</th>
+                <th style="text-align: center;">Movie Id</th>
+                
+            </tr>
+        </thead>
+    <tr *ngFor="let ticket of ticket">
+        <td>{{ticket.ticketId}}</td>
+        <td>{{ticket.noofTickets}}</td>
+        <td>{{ticket.customer.customerId}}</td>
+        <td>{{ticket.customer.custName}}</td>
+        <td>{{ticket.customer.custMobileno}}</td>
+        <td>{{ticket.customer.custEmail}}</td>
+        <td>{{ticket.movie.movieId}}</td>
+    </tr>
+    </table>   
+          
+
+
+</div>
