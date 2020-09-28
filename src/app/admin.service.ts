@@ -106,8 +106,8 @@ export class AdminService {
     return this.httpClient.post('RESTAPI/webapi/myresource/updateTicket', ticket);
   }
 
-  cancelTicketBooking(ticketId:any, cancelTicketCount:any){
-    this.result = String(ticketId)+' '+String(cancelTicketCount);
+  cancelTicketBooking(ticketId:any, customerId : any, cancelTicketCount:any){
+    this.result = String(ticketId)+' '+String(customerId)+' '+String(cancelTicketCount);
     return this.httpClient.get('RESTAPI/webapi/myresource/cancelTicketBooking/' + this.result);
   }
 
