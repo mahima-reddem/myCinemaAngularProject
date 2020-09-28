@@ -12,10 +12,11 @@ export class BookingsComponent implements OnInit {
   public count : any;
   public output :any;
   public ticket : any;
+  public customerId : any;
   public retreiveData :any;
   
   constructor(private service : AdminService, private activatedRoute : ActivatedRoute) {
-    //this.customerId = JSON.parse(activatedRoute.snapshot.params["customerId"]);
+    this.customerId = JSON.parse(activatedRoute.snapshot.params["customerId"]);
     //this.service.getTicketsByCustomerId(this.customerId).subscribe((result:any) => {this.ticket = result;console.log(result)});
    }
 
@@ -30,8 +31,10 @@ export class BookingsComponent implements OnInit {
     this.count = cancelForm.cancelTicketCount;  
 
     
-    await this.service.cancelTicketBooking(this.ticketId, this.count).subscribe((result:any) => {this.output = result;
+    await this.service.cancelTicketBooking(this.ticketId, this.customerId, this.count).subscribe((result:any) => {this.output = result;
     if(this.output == 1){
+       alert("Your request for cancellation is approved!");
+
       this.service.getTicket(this.ticketId).subscribe((result:any)=> {this.ticket = result});
     localStorage.setItem('ticket',JSON.stringify(this.ticket));
     this.retreiveData = localStorage.getItem('ticket');
@@ -43,11 +46,10 @@ export class BookingsComponent implements OnInit {
     this.service.updateTicket(this.ticket).subscribe((result:any)=>console.log(result));
     this.service.updateMovie(this.ticket).subscribe((result:any)=>console.log(result));
 
-      alert("Your request for cancellation is approved!");
-
+     
     }
     else{
-      alert("Sorry, you cannot cancel your booking!");
+      alert("Invalid Credentials or Cancellation period has been expired!");
     }
   });
   }
